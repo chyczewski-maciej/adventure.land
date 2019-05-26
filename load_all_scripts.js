@@ -1,6 +1,6 @@
-function load_all_scripts() {
+(function () {
   let load_external_script = (url) => {
-    $.ajaxSetup({async: false});
+    $.ajaxSetup({ async: false });
     $.get(url).done(eval).fail(() => {
       log("Failed to load a script. Retrying...");
       setTimeout(() => load_external_script(url), 500);
@@ -23,4 +23,4 @@ function load_all_scripts() {
   ];
 
   scripts.map(script => prepend + script + append).forEach(load_external_script);
-}
+})();
