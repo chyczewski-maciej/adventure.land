@@ -1,4 +1,12 @@
 function load_all_scripts() {
+  let load_external_script = (url) => {
+    $.ajaxSetup({async: false});
+    $.get(url).done(eval).fail(() => {
+      log("Failed to load a script. Retrying...");
+      setTimeout(() => load_external_script(url), 500);
+    });
+  }
+
   let prepend = 'https://raw.githubusercontent.com/chyczewski-maciej/adventure.land/master/';
   let append = '.js';
   let scripts = [
