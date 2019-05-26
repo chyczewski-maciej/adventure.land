@@ -1,5 +1,5 @@
 function load_all_scripts() {
-  let prepend = 'https://raw.githubusercontent.com/chyczewski-maciej/adventure.land/master';
+  let prepend = 'https://raw.githubusercontent.com/chyczewski-maciej/adventure.land/master/';
   let append = '.js';
   let scripts = [
     "auto_attack",
