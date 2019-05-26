@@ -7,7 +7,7 @@ function load_all_scripts() {
     "auto_loot",
     "copy_target",
     "grind",
-    "heal_friend",
+    "heal_friends",
     "sell_all",
     "use_potions"
   ];
