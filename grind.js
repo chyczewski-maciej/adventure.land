@@ -1,9 +1,9 @@
-function grind() {
+function grind(args, filter) {
   function grindIter() {
     if (character.rip || is_moving(character)) return;
     var target = get_targeted_monster();
     if (!target) {
-      target = get_nearest_monster({ min_xp: 100, max_att: 200 });
+      target = get_nearest_monster(args, filter);
       change_target(target);
     }
     if (target)

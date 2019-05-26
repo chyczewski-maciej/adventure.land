@@ -2,6 +2,8 @@ function load_all_scripts() {
   let prepend = 'https://raw.githubusercontent.com/chyczewski-maciej/adventure.land/master/';
   let append = '.js';
   let scripts = [
+    "get_nearest_monster",
+    
     "auto_attack",
     "auto_follow",
     "auto_loot",
