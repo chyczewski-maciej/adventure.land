@@ -4,7 +4,7 @@ function heal_friends(friends, predicate) {
   friends
     .map(get_player)
     .filter(player => player)
-    .filter(player => !preditcate || predicate(player))
+    .filter(player => (!predicate) || predicate(player))
     .filter(player => (player.hp < (player.max_hp * 0.5)) || (player.hp < player.max_hp - (character.int * 5)))
     .sort(player => player.hp / player.max_hp)
     .slice(0, 1) // take 1
