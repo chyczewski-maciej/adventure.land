@@ -1,24 +1,20 @@
 function choose_target(
   filter_predicate = (_ => true),
-  keySelector = (monster => -parent.distance(character, monster)),
-  comparer = ((x1, x2) => x1 - x2)) {
-
-  function get_all_monsters() {
-    var monsters = [];
-    for (id in parent.entities) {
-      var current = parent.entities[id];
-      if (current.type == 'monster' && current.visible && !current.dead)
-        monsters.push(current);
-    }
-    return monsters;
-  }
+  sort_functions = [
+    m => get_target_of(m) == character, // attack those that attack our character first
+    m => -parent.distance(character, m) // attack those who are the closest
+  ])
+{
 
   if (get_target()) // exit the function if the target is already set
     return;
 
-  get_all_monsters()
+  Object
+    .entries(parent.entities)
+    .map(([key, value]) => value)	
+    .filter(e => (e.type == 'monster') && e.visible && !e.dead)
     .filter(filter_predicate)
-    .sort((monster1, monster2) => comparer(keySelector(monster1), keySelector(monster2)))
+    .sort((m1,m2) => sort_functions.map(f=>f(m2)-f(m1)).filter(x=>x).slice(0,1))
     .slice(0, 1)
     .forEach(change_target);
 }
