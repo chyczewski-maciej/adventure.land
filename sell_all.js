@@ -1,9 +1,7 @@
-function sell_all(item_name) {
-  while (true) {
-    let index = locate_item(item_name);
-    if (index < 0)
-      return;
-    
-    sell(index, 1000);
-  }
+function sell_all(filter = (_ => true)) {
+  character
+    .items
+    .map((item, index) => [item, index])
+    .filter(([item, index]) => item && filter(item, index))
+    .forEach(([_, index]) => sell(index))
 }
