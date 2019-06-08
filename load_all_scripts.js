@@ -16,6 +16,7 @@
     "copy_target",
     "heal_friends",
     "sell_all",
+    "upgrade_items",
     "use_potions"
   ];
 
