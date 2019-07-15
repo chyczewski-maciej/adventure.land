@@ -17,7 +17,8 @@
     "heal_friends",
     "sell_all",
     "upgrade_items",
-    "use_potions"
+    "use_potions",
+    "create_party"
   ];
 
   scripts.map(script => prepend + script + append).forEach(load_external_script);
